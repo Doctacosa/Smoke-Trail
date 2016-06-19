@@ -379,7 +379,16 @@ public enum ParticleEffect {
 	 * <li>The offset values have no influence on this particle effect
 	 * </ul>
 	 */
-	MOB_APPEARANCE("mobappearance", 41, 8);
+	MOB_APPEARANCE("mobappearance", 41, 8),
+	
+	//New 1.10 effects
+	DRAGONBREATH("dragonbreath", 42, 9),
+	ENDROD("endrod", 43, 9),
+	DAMAGEINDICATOR("damageindicator", 44, 9),
+	SWEEPATTACK("sweepattack", 45, 9),
+	FALLINGDUST("fallingdust", 46, 10, ParticleProperty.REQUIRES_DATA);
+	
+	
 
 	private static final Map<String, ParticleEffect> NAME_MAP = new HashMap<String, ParticleEffect>();
 	private static final Map<Integer, ParticleEffect> ID_MAP = new HashMap<Integer, ParticleEffect>();
@@ -526,7 +535,7 @@ public enum ParticleEffect {
 	 * @return Whether the data type is correct or not
 	 */
 	private static boolean isDataCorrect(ParticleEffect effect, ParticleData data) {
-		return ((effect == BLOCK_CRACK || effect == BLOCK_DUST) && data instanceof BlockData) || (effect == ITEM_CRACK && data instanceof ItemData);
+		return ((effect == BLOCK_CRACK || effect == BLOCK_DUST || effect == FALLINGDUST) && data instanceof BlockData) || (effect == ITEM_CRACK && data instanceof ItemData);
 	}
 
 	/**
@@ -1387,7 +1396,10 @@ public enum ParticleEffect {
 				return;
 			}
 			try {
-				version = Integer.parseInt(Character.toString(PackageType.getServerVersion().charAt(3)));
+				String ver = PackageType.getServerVersion();
+				int un1 = ver.indexOf("_") + 1;
+				int un2 = ver.lastIndexOf("_");
+				version = Integer.parseInt(ver.substring(un1, un2));
 				if (version > 7) {
 					enumParticle = PackageType.MINECRAFT_SERVER.getClass("EnumParticle");
 				}
