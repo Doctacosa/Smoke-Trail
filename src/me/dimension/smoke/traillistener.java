@@ -213,12 +213,12 @@ public class traillistener
 
 //</editor-fold>
         //<editor-fold defaultstate="collapsed" desc=" Ender Trail ">
-            if (plugin.modelist.get(sender.getName()).contains("ender")) {
-                if (!trailNegative(EnderHigh, EnderLow)) {
-                    Random random = new Random();
-                    ParticleEffect.PORTAL.display(random.nextFloat(), random.nextFloat(), random.nextFloat(), 1, random.nextInt((EnderHigh - EnderLow) + EnderLow) + 1,sender.getLocation());
-                }
-            }
+		if (plugin.modelist.get(sender.getName()).contains("ender")) {
+			if (!trailNegative(EnderHigh, EnderLow)) {
+				Random random = new Random();
+				ParticleEffect.PORTAL.display(random.nextFloat(), random.nextFloat(), random.nextFloat(), 1.0F, random.nextInt(this.EnderHigh - this.EnderLow + this.EnderLow) + 1, sender.getLocation(), 50.0D);
+			}
+		}
 
 //</editor-fold>   
         //<editor-fold defaultstate="collapsed" desc=" Flower Trail ">
