@@ -95,21 +95,21 @@ public class traillistener
     public void onPlayerTP(PlayerTeleportEvent event) {
         Player player = event.getPlayer();
         if (flower.containsKey(player)) {//Check if the player leaving has any items spawned
-            Iterator it = flower.get(player).iterator();
+            Iterator<?> it = flower.get(player).iterator();
             while (it.hasNext()) {//Remove each item on by one
                 Entity removed = (Entity) it.next();
                 removed.remove();
             }
         }
         if (stars.containsKey(player)) {//Rinse
-            Iterator it = stars.get(player).iterator();
+            Iterator<?> it = stars.get(player).iterator();
             while (it.hasNext()) {
                 Entity removed = (Entity) it.next();
                 removed.remove();
             }
         }
         if (diamonds.containsKey(player)) {//Repeat
-            Iterator it = diamonds.get(player).iterator();
+            Iterator<?> it = diamonds.get(player).iterator();
             while (it.hasNext()) {
                 Entity removed = (Entity) it.next();
                 removed.remove();
@@ -149,21 +149,21 @@ public class traillistener
     public void onPlayerLeave(PlayerQuitEvent event) {
         Player player = event.getPlayer();
         if (flower.containsKey(player)) {//Check if the player leaving has any items spawned
-            Iterator it = flower.get(player).iterator();
+            Iterator<?> it = flower.get(player).iterator();
             while (it.hasNext()) {//Remove each item on by one
                 Entity removed = (Entity) it.next();
                 removed.remove();
             }
         }
         if (stars.containsKey(player)) {//Rinse
-            Iterator it = stars.get(player).iterator();
+            Iterator<?> it = stars.get(player).iterator();
             while (it.hasNext()) {
                 Entity removed = (Entity) it.next();
                 removed.remove();
             }
         }
         if (diamonds.containsKey(player)) {//Repeat
-            Iterator it = diamonds.get(player).iterator();
+            Iterator<?> it = diamonds.get(player).iterator();
             while (it.hasNext()) {
                 Entity removed = (Entity) it.next();
                 removed.remove();
@@ -257,7 +257,7 @@ public class traillistener
                     Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
                         public void run() {
                             if (!traillistener.this.flower.get(sender).isEmpty()) {
-                                Iterator alpha = traillistener.this.flower.get(sender).iterator();
+                                Iterator<?> alpha = traillistener.this.flower.get(sender).iterator();
                                 Item next1 = (Item) alpha.next();
                                 traillistener.this.flower.get(sender).remove(next1);
                                 allitems.remove(next1);
@@ -309,7 +309,7 @@ public class traillistener
                     Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
                         public void run() {
                             if (!traillistener.this.diamonds.get(sender).isEmpty()) {
-                                Iterator alpha = traillistener.this.diamonds.get(sender).iterator();
+                                Iterator<?> alpha = traillistener.this.diamonds.get(sender).iterator();
                                 Item next1 = (Item) alpha.next();
                                 traillistener.this.diamonds.get(sender).remove(next1);
                                 allitems.remove(next1);
@@ -342,7 +342,7 @@ public class traillistener
                     Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
                         public void run() {
                             if (!traillistener.this.stars.get(sender).isEmpty()) {
-                                Iterator alpha = traillistener.this.stars.get(sender).iterator();
+                                Iterator<?> alpha = traillistener.this.stars.get(sender).iterator();
                                 Item next1 = (Item) alpha.next();
                                 traillistener.this.stars.get(sender).remove(next1);
                                 allitems.remove(next1);

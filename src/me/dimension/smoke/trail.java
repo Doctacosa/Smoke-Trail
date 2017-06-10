@@ -10,6 +10,7 @@ import java.util.Map.Entry;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -38,7 +39,7 @@ public class trail extends JavaPlugin {
     public ChatColor Blue = ChatColor.BLUE;
     public String on = "is now on";
     public String off = "is now off";
-    public final HashMap<String, ArrayList<String>> modelist = new HashMap();
+    public final HashMap<String, ArrayList<String>> modelist = new HashMap<String, ArrayList<String>>();
     public final traillistener pl = new traillistener(this);
     public final trailutil util = new trailutil(this);
 
