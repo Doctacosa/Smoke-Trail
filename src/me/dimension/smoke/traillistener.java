@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.Particle;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Item;
@@ -196,7 +197,7 @@ public class traillistener
             if (plugin.modelist.get(sender.getName()).contains("smoke")) {
                 if (!trailNegative(SmokeHigh, SmokeLow)) {
                     Random random = new Random();
-                    ParticleEffect.SMOKE_LARGE.display(random.nextFloat(), random.nextFloat(), random.nextFloat(), 0, random.nextInt((SmokeHigh - SmokeLow) + SmokeLow) + 1,sender.getLocation(), 50);
+                    world.spawnParticle(Particle.SMOKE_LARGE, sender.getLocation(), random.nextInt((SmokeHigh - SmokeLow) + SmokeLow) + 1, random.nextFloat(), random.nextFloat(), random.nextFloat(), 0);
                 }
             }
 
@@ -206,7 +207,7 @@ public class traillistener
             if ((plugin.modelist.get(sender.getName())).contains("fire")) {
                 if (!trailNegative(FireHigh, FireLow)) {
                     Random random = new Random();
-                    ParticleEffect.FLAME.display( random.nextFloat(), random.nextFloat(), random.nextFloat(), 0, random.nextInt((FireHigh - FireLow) + FireLow) + 1, sender.getLocation(),50);
+                    world.spawnParticle(Particle.FLAME, sender.getLocation(), random.nextInt((FireHigh - FireLow) + FireLow) + 1, random.nextFloat(), random.nextFloat(), random.nextFloat(), 0);
                 }
             }
 
@@ -215,7 +216,7 @@ public class traillistener
 		if (plugin.modelist.get(sender.getName()).contains("ender")) {
 			if (!trailNegative(EnderHigh, EnderLow)) {
 				Random random = new Random();
-				ParticleEffect.PORTAL.display(random.nextFloat(), random.nextFloat(), random.nextFloat(), 1.0F, random.nextInt(this.EnderHigh - this.EnderLow + this.EnderLow) + 1, sender.getLocation(), 50.0D);
+				world.spawnParticle(Particle.PORTAL, sender.getLocation(), random.nextInt((EnderHigh - EnderLow) + EnderLow) + 1, random.nextFloat(), random.nextFloat(), random.nextFloat(), 1.0F);
 			}
 		}
 
@@ -366,7 +367,7 @@ public class traillistener
             if (plugin.modelist.get(sender.getName()).contains("hearts")) {
                 if (!trailNegative(HeartHigh, HeartLow)) {
                     Random random = new Random();
-                    ParticleEffect.HEART.display(random.nextFloat(), random.nextFloat(), random.nextFloat(), 3, random.nextInt((HeartHigh - HeartLow) + HeartLow) + 1, sender.getLocation(),50);
+                    world.spawnParticle(Particle.HEART, sender.getLocation(), random.nextInt((HeartHigh - HeartLow) + HeartLow) + 1, random.nextFloat(), random.nextFloat(), random.nextFloat(), 3);
                 }
             }
 
@@ -375,7 +376,7 @@ public class traillistener
             if (plugin.modelist.get(sender.getName()).contains("crit")) {
                 if (!trailNegative(CritHigh, CritLow)) {
                     Random random = new Random();
-                    ParticleEffect.CRIT.display(random.nextFloat(), random.nextFloat(), random.nextFloat(), 1, random.nextInt((CritHigh - CritLow) + CritLow) + 1,sender.getLocation(),50);
+                    world.spawnParticle(Particle.CRIT, sender.getLocation(), random.nextInt((CritHigh - CritLow) + CritLow) + 1, random.nextFloat(), random.nextFloat(), random.nextFloat(), 1);
                 }
                 
             }
@@ -385,7 +386,7 @@ public class traillistener
             if (plugin.modelist.get(sender.getName()).contains("sweat")) {
                 if (!trailNegative(SweatHigh, SweatLow)) {
                     Random random = new Random();
-                    ParticleEffect.WATER_SPLASH.display(random.nextFloat(), random.nextFloat(), random.nextFloat(), 2, random.nextInt((SweatHigh - SweatLow) + SweatLow) + 1,sender.getLocation(),50);
+                    world.spawnParticle(Particle.WATER_SPLASH, sender.getLocation(), random.nextInt((SweatHigh - SweatLow) + SweatLow) + 1, random.nextFloat(), random.nextFloat(), random.nextFloat(), 2);
                 }
             }
 
@@ -394,8 +395,8 @@ public class traillistener
             if (plugin.modelist.get(sender.getName()).contains("disco")) {
                 if (!trailNegative(DiscoHigh, DiscoLow)) {
                     Random random = new Random();
-                    ParticleEffect.REDSTONE.display(random.nextFloat(), random.nextFloat(), random.nextFloat(), 1, random.nextInt((DiscoHigh - DiscoLow) + DiscoLow) + 1,sender.getLocation(),50);
-                    ParticleEffect.SPELL_MOB.display( random.nextFloat(), random.nextFloat(), random.nextFloat(), 1, random.nextInt((DiscoHigh - DiscoLow) + DiscoLow) + 1,sender.getLocation(),50);
+                    //world.spawnParticle(Particle.REDSTONE, sender.getLocation(), random.nextInt((DiscoHigh - DiscoLow) + DiscoLow) + 1, random.nextFloat(), random.nextFloat(), random.nextFloat(), 1);
+                    world.spawnParticle(Particle.SPELL_MOB, sender.getLocation(), random.nextInt((DiscoHigh - DiscoLow) + DiscoLow) + 1, random.nextFloat(), random.nextFloat(), random.nextFloat(), 1);
                 }
             }
 
@@ -403,8 +404,10 @@ public class traillistener
         //<editor-fold defaultstate="collapsed" desc=" Blood Trail ">
             if (plugin.modelist.get(sender.getName()).contains("blood")) {
                 if (!trailNegative(BloodHigh, BloodLow)) {
-                    Random random = new Random();
-                    ParticleEffect.REDSTONE.display(random.nextFloat(), random.nextFloat(), random.nextFloat(), 0, random.nextInt((BloodHigh - BloodLow) + BloodLow) + 1,sender.getLocation(),50);
+                    /*
+                	Random random = new Random();
+                    world.spawnParticle(Particle.REDSTONE, sender.getLocation(), random.nextInt((BloodHigh - BloodLow) + BloodLow) + 1, random.nextFloat(), random.nextFloat(), random.nextFloat(), 0);
+                    */
                 }
             }
 
@@ -413,7 +416,7 @@ public class traillistener
             if (plugin.modelist.get(sender.getName()).contains("sparks")) {
                 if (!trailNegative(SparkHigh, SparkLow)) {
                     Random random = new Random();
-                    ParticleEffect.FIREWORKS_SPARK.display(random.nextFloat(), random.nextFloat(), random.nextFloat(), 0, random.nextInt((SparkHigh - SparkLow) + SparkLow) + 1,sender.getLocation(),50);
+                    world.spawnParticle(Particle.FIREWORKS_SPARK, sender.getLocation(), random.nextInt((SparkHigh - SparkLow) + SparkLow) + 1, random.nextFloat(), random.nextFloat(), random.nextFloat(), 0);
                     
                 }
             }
@@ -423,7 +426,7 @@ public class traillistener
             if (plugin.modelist.get(sender.getName()).contains("breadcrumb")) {
                 if (!trailNegative(BreadHigh, BreadLow)) {
                     Random random = new Random();
-                    ParticleEffect.DRIP_LAVA.display(random.nextFloat(), random.nextFloat(), random.nextFloat(), 1, random.nextInt((BreadHigh - BreadLow) + BreadLow) + 1,sender.getLocation(),50);
+                    world.spawnParticle(Particle.DRIP_LAVA, sender.getLocation(), random.nextInt((BreadHigh - BreadLow) + BreadLow) + 1, random.nextFloat(), random.nextFloat(), random.nextFloat(), 1);
                 }
             }
 
@@ -432,7 +435,7 @@ public class traillistener
             if (plugin.modelist.get(sender.getName()).contains("magma")) {
                 if (!trailNegative(MagmaHigh, MagmaLow)) {
                     Random random = new Random();
-                    ParticleEffect.LAVA.display(random.nextFloat(), random.nextFloat(), random.nextFloat(), 0, random.nextInt((MagmaHigh - MagmaLow) + MagmaLow) + 1, sender.getLocation(),50);
+                    world.spawnParticle(Particle.LAVA, sender.getLocation(), random.nextInt((MagmaHigh - MagmaLow) + MagmaLow) + 1, random.nextFloat(), random.nextFloat(), random.nextFloat(), 0);
                 }
             }
 
@@ -441,7 +444,7 @@ public class traillistener
             if (plugin.modelist.get(sender.getName()).contains("letters")) {
                 if (!trailNegative(LetterHigh, LetterLow)) {
                     Random random = new Random();
-                    ParticleEffect.ENCHANTMENT_TABLE.display(random.nextFloat(), random.nextFloat(), random.nextFloat(), 1, random.nextInt((LetterHigh - LetterLow) + LetterLow) + 1,sender.getLocation(),50);
+                    world.spawnParticle(Particle.ENCHANTMENT_TABLE, sender.getLocation(), random.nextInt((LetterHigh - LetterLow) + LetterLow) + 1, random.nextFloat(), random.nextFloat(), random.nextFloat(), 1);
                 }
             }
 
@@ -450,7 +453,7 @@ public class traillistener
             if (plugin.modelist.get(sender.getName()).contains("happy")) {
                 if (!trailNegative(HappyHigh, HappyLow)) {
                     Random random = new Random();
-                    ParticleEffect.VILLAGER_HAPPY.display(random.nextFloat(), random.nextFloat(), random.nextFloat(), 0, random.nextInt((HappyHigh - HappyLow) + HappyLow) + 1,sender.getLocation(),50);
+                    world.spawnParticle(Particle.VILLAGER_HAPPY, sender.getLocation(), random.nextInt((HappyHigh - HappyLow) + HappyLow) + 1, random.nextFloat(), random.nextFloat(), random.nextFloat(), 0);
                 }
                 
             }
@@ -460,8 +463,8 @@ public class traillistener
             if (plugin.modelist.get(sender.getName()).contains("magic")) {
                 if (!trailNegative(MagicHigh, MagicLow)) {
                     Random random = new Random();
-                    ParticleEffect.CRIT_MAGIC.display(random.nextFloat(), random.nextFloat(), random.nextFloat(), 0, random.nextInt((MagicHigh - MagicLow) + MagicLow) + 1,sender.getLocation(),50);
-                    ParticleEffect.SPELL_WITCH.display(random.nextFloat(), random.nextFloat(), random.nextFloat(), 0, random.nextInt((MagicHigh - MagicLow) + MagicLow) + 1,sender.getLocation(),50);
+                    world.spawnParticle(Particle.CRIT_MAGIC, sender.getLocation(), random.nextInt((MagicHigh - MagicLow) + MagicLow) + 1, random.nextFloat(), random.nextFloat(), random.nextFloat(), 0);
+                    world.spawnParticle(Particle.SPELL_WITCH, sender.getLocation(), random.nextInt((MagicHigh - MagicLow) + MagicLow) + 1, random.nextFloat(), random.nextFloat(), random.nextFloat(), 0);
                 }
                 
             }
@@ -470,8 +473,8 @@ public class traillistener
         //<editor-fold defaultstate="collapsed" desc=" Music Trail ">
             if (plugin.modelist.get(sender.getName()).contains("music")) {
                 if(!trailNegative(MusicHigh,MusicLow)){
-                Random random = new Random();
-                ParticleEffect.NOTE.display(random.nextFloat(), random.nextFloat(), random.nextFloat(), 1, random.nextInt((MusicHigh - MusicLow) + MusicLow) + 1,sender.getLocation(),50);
+	                Random random = new Random();
+	                world.spawnParticle(Particle.NOTE, sender.getLocation(), random.nextInt((MusicHigh - MusicLow) + MusicLow) + 1, random.nextFloat(), random.nextFloat(), random.nextFloat(), 1);
                 }  
             }
 
@@ -480,7 +483,7 @@ public class traillistener
             if (plugin.modelist.get(sender.getName()).contains("anger")) {
                 if (!trailNegative(AngerHigh, AngerLow)) {
                     Random random = new Random();
-                    ParticleEffect.VILLAGER_ANGRY.display(random.nextFloat(), random.nextFloat(), random.nextFloat(), 0, random.nextInt((AngerHigh - AngerLow) + AngerLow) + 1,sender.getLocation(),50);
+                    world.spawnParticle(Particle.VILLAGER_ANGRY, sender.getLocation(), random.nextInt((AngerHigh - AngerLow) + AngerLow) + 1, random.nextFloat(), random.nextFloat(), random.nextFloat(), 0);
                 }
                 
             }
@@ -490,7 +493,7 @@ public class traillistener
             if (plugin.modelist.get(sender.getName()).contains("clouds")) {
                 if (!trailNegative(CloudHigh, CloudLow)) {
                     Random random = new Random();
-                    ParticleEffect.CLOUD.display(random.nextFloat(), random.nextFloat(), random.nextFloat(), 0, random.nextInt((CloudHigh - CloudLow) + CloudLow) + 1,sender.getLocation(),50);
+                    world.spawnParticle(Particle.CLOUD, sender.getLocation(), random.nextInt((CloudHigh - CloudLow) + CloudLow) + 1, random.nextFloat(), random.nextFloat(), random.nextFloat(), 0);
                 }
                 
             }
