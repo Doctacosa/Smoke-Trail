@@ -3,6 +3,8 @@ version: 8.0
 main: me.dimension.smoke.trail
 author: DimensioX(King Magnus)
 description: Classy trails for players that want to walk in style.
+api-version: 1.13
+
 commands:
   trail:
     description: Base command for all trail effects
