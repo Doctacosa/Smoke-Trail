@@ -17,11 +17,11 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
+import org.bukkit.event.entity.EntityPickupItemEvent;
 import org.bukkit.event.entity.EntityPortalEnterEvent;
 import org.bukkit.event.inventory.InventoryPickupItemEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
-import org.bukkit.event.player.PlayerPickupItemEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.inventory.ItemStack;
@@ -82,13 +82,12 @@ public class traillistener
 
 //</editor-fold>
     @EventHandler
-    public void onPlayerPickupItem(PlayerPickupItemEvent event) {
-        Entity newitem = event.getItem();
-
-        if (allitems.contains(newitem)) {
-            event.setCancelled(true);
-        }
-
+    public void onEntityPickupItem(EntityPickupItemEvent event) {
+    	Entity newitem = event.getItem();
+    	
+    	if (allitems.contains(newitem)) {
+    		event.setCancelled(true);
+    	}
     }
 
     @EventHandler
