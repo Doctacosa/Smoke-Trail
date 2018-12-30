@@ -229,20 +229,20 @@ public class traillistener
                     //Spawn flowers when player walks based off what number is generated a 50% chance to pick either one
                     //Also add each item spawned to the player's personal list of items that has been spawned and add it to the global list of items spawned
                     //<editor-fold defaultstate="collapsed" desc=" List of flowers ">
-                    ItemStack redrose = new ItemStack(Material.RED_ROSE, 1);
-                    ItemStack blueorchid = new ItemStack(Material.RED_ROSE, 1, (short) 1);
-                    ItemStack allium = new ItemStack(Material.RED_ROSE, 1, (short) 2);
-                    ItemStack azurebluet = new ItemStack(Material.RED_ROSE, 1, (short) 3);
-                    ItemStack redtulip = new ItemStack(Material.RED_ROSE, 1, (short) 4);
-                    ItemStack orangetulip = new ItemStack(Material.RED_ROSE, 1, (short) 5);
-                    ItemStack whitetulip = new ItemStack(Material.RED_ROSE, 1, (short) 6);
-                    ItemStack pinktulip = new ItemStack(Material.RED_ROSE, 1, (short) 7);
-                    ItemStack oxeyedaisy = new ItemStack(Material.RED_ROSE, 1, (short) 8);
-                    ItemStack sunflower = new ItemStack(Material.DOUBLE_PLANT, 1);
-                    ItemStack lilac = new ItemStack(Material.DOUBLE_PLANT, 1, (short) 1);
-                    ItemStack rosebush = new ItemStack(Material.DOUBLE_PLANT, 1, (short) 4);
-                    ItemStack peony = new ItemStack(Material.RED_ROSE, 1, (short) 5);
-                    ItemStack dandelion = new ItemStack(Material.YELLOW_FLOWER, 1);
+                    ItemStack redrose = new ItemStack(Material.POPPY, 1);
+                    ItemStack blueorchid = new ItemStack(Material.BLUE_ORCHID, 1);
+                    ItemStack allium = new ItemStack(Material.ALLIUM, 1);
+                    ItemStack azurebluet = new ItemStack(Material.AZURE_BLUET, 1);
+                    ItemStack redtulip = new ItemStack(Material.RED_TULIP, 1);
+                    ItemStack orangetulip = new ItemStack(Material.ORANGE_TULIP, 1);
+                    ItemStack whitetulip = new ItemStack(Material.WHITE_TULIP, 1);
+                    ItemStack pinktulip = new ItemStack(Material.PINK_TULIP, 1);
+                    ItemStack oxeyedaisy = new ItemStack(Material.OXEYE_DAISY, 1);
+                    ItemStack sunflower = new ItemStack(Material.SUNFLOWER, 1);
+                    ItemStack lilac = new ItemStack(Material.LILAC, 1);
+                    ItemStack rosebush = new ItemStack(Material.ROSE_BUSH, 1);
+                    ItemStack peony = new ItemStack(Material.PEONY, 1);
+                    ItemStack dandelion = new ItemStack(Material.DANDELION, 1);
                     ItemStack[] flowerlist = {redrose, blueorchid, allium, azurebluet, redtulip, orangetulip, whitetulip, pinktulip, oxeyedaisy, sunflower, lilac, rosebush, peony, dandelion};
 
 //</editor-fold> 
