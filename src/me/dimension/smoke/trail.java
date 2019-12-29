@@ -31,9 +31,9 @@ public class trail extends JavaPlugin {
     public String lol = "[Smoke Trail] ";
     public String Multi = "[Multi Trail] ";
 //Done Trails:
-//Smoke,Fire,Ender,Flower,Loot,Stars,Hearts,Crit,Sweat,Disco,Blood.Sparks,Breadcrumb,Magma,Letters,Happy
+//Smoke,Fire,Ender,Hearts,Crit,Sweat,Disco,Blood.Sparks,Breadcrumb,Magma,Letters,Happy
 //Magic,Music,Anger,Cloud
-    public String[] trails = {"smoke", "fire", "ender", "flowers", "loot", "stars", "hearts", "crit", "sweat", 
+    public String[] trails = {"smoke", "fire", "ender", "hearts", "crit", "sweat", 
         "disco", "blood", "sparks", "breadcrumb", "magma", "letters", "happy", "magic", "music", "anger","clouds","multi"};
     public ChatColor Red = ChatColor.RED;
     public ChatColor Blue = ChatColor.BLUE;

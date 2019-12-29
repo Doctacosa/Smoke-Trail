@@ -45,15 +45,6 @@ Messages:
   ender:
     enabled: "&6[&cST&6] &2Ender &aTrail Enabled!"
     disabled: "&6[&cST&6] &2Ender &cTrail Disabled!"
-  flowers:
-    enabled: "&6[&cST&6] &eFlower &aTrail Enabled!"
-    disabled: "&6[&cST&6] &eFlower &cTrail Disabled!"
-  loot:
-    enabled: "&6[&cST&6] &bLoot &aTrail Enabled!"
-    disabled: "&6[&cST&6] &bLoot &cTrail Disabled!"
-  stars:
-    enabled: "&6[&cST&6] &fStar &aTrail Enabled!"
-    disabled: "&6[&cST&6] &fStar &cTrail Disabled!"
   hearts:
     enabled: "&6[&cST&6] &cHearts &aTrail Enabled!"
     disabled: "&6[&cST&6] &cHearts &cTrail Disabled!"

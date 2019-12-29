@@ -7,13 +7,10 @@ import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 import java.util.logging.Logger;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
-import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -219,148 +216,6 @@ public class traillistener
 				world.spawnParticle(Particle.PORTAL, sender.getLocation(), random.nextInt((EnderHigh - EnderLow) + EnderLow) + 1, random.nextFloat(), random.nextFloat(), random.nextFloat(), 1.0F);
 			}
 		}
-
-//</editor-fold>   
-        //<editor-fold defaultstate="collapsed" desc=" Flower Trail ">
-            if (plugin.modelist.get(sender.getName()).contains("flowers")) {
-                
-                if (flower.containsKey(sender)) {
-
-                    //Spawn flowers when player walks based off what number is generated a 50% chance to pick either one
-                    //Also add each item spawned to the player's personal list of items that has been spawned and add it to the global list of items spawned
-                    //<editor-fold defaultstate="collapsed" desc=" List of flowers ">
-                    ItemStack redrose = new ItemStack(Material.POPPY, 1);
-                    ItemStack blueorchid = new ItemStack(Material.BLUE_ORCHID, 1);
-                    ItemStack allium = new ItemStack(Material.ALLIUM, 1);
-                    ItemStack azurebluet = new ItemStack(Material.AZURE_BLUET, 1);
-                    ItemStack redtulip = new ItemStack(Material.RED_TULIP, 1);
-                    ItemStack orangetulip = new ItemStack(Material.ORANGE_TULIP, 1);
-                    ItemStack whitetulip = new ItemStack(Material.WHITE_TULIP, 1);
-                    ItemStack pinktulip = new ItemStack(Material.PINK_TULIP, 1);
-                    ItemStack oxeyedaisy = new ItemStack(Material.OXEYE_DAISY, 1);
-                    ItemStack sunflower = new ItemStack(Material.SUNFLOWER, 1);
-                    ItemStack lilac = new ItemStack(Material.LILAC, 1);
-                    ItemStack rosebush = new ItemStack(Material.ROSE_BUSH, 1);
-                    ItemStack peony = new ItemStack(Material.PEONY, 1);
-                    ItemStack dandelion = new ItemStack(Material.DANDELION, 1);
-                    ItemStack[] flowerlist = {redrose, blueorchid, allium, azurebluet, redtulip, orangetulip, whitetulip, pinktulip, oxeyedaisy, sunflower, lilac, rosebush, peony, dandelion};
-
-//</editor-fold> 
-                    Random flowerdrop = new Random();
-                    int newflower = flowerdrop.nextInt(flowerlist.length);
-                    Entity nextflower = world.dropItem(event.getFrom(), flowerlist[newflower]);
-                    
-                    this.flower.get(sender).add(nextflower);
-                    allitems.add(nextflower);
-                    allitemstacks.add(flowerlist[newflower]);
-                    //If the player has flowers that have been in the world for more than 5 seconds it will remove them from the world and all hashmaps/arrays containing them
-                    Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
-                        public void run() {
-                            if (!traillistener.this.flower.get(sender).isEmpty()) {
-                                Iterator<?> alpha = traillistener.this.flower.get(sender).iterator();
-                                Item next1 = (Item) alpha.next();
-                                traillistener.this.flower.get(sender).remove(next1);
-                                allitems.remove(next1);
-                                if (allitemstacks.contains(next1.getItemStack())) {
-                                    allitemstacks.remove(next1.getItemStack());
-                                }
-                                next1.remove();
-                            } else {
-                                Bukkit.getScheduler().cancelTasks(traillistener.plugin);
-                            }
-                        }
-                    }, 100L);
-                    
-                } else {
-                    flower.put(sender, new ArrayList<Entity>());
-                }
-                
-            }
-
-//</editor-fold>    
-        //<editor-fold defaultstate="collapsed" desc=" Loot Trail ">
-            if (plugin.modelist.get(sender.getName()).contains("loot")) {
-                //Picks what will drop based off of a randomly generated number
-                if (diamonds.containsKey(sender)) {
-                    ItemStack diamond1 = new ItemStack(Material.DIAMOND);
-                    ItemStack gold1 = new ItemStack(Material.GOLD_INGOT);
-                    ItemStack emerald1 = new ItemStack(Material.EMERALD);
-                    ItemStack iron1 = new ItemStack(Material.IRON_INGOT);
-                    Random dropchance = new Random();
-                    int dropped = dropchance.nextInt(5);
-                    if (dropped == 1) {
-                        Entity diamonddrop = world.dropItem(event.getFrom(), diamond1);
-                        this.diamonds.get(sender).add(diamonddrop);
-                        allitems.add(diamonddrop);
-                    } else if (dropped == 2) {
-                        Entity diamonddrop = world.dropItem(event.getFrom(), gold1);
-                        this.diamonds.get(sender).add(diamonddrop);
-                        allitems.add(diamonddrop);
-                    } else if (dropped == 3) {
-                        Entity diamonddrop = world.dropItem(event.getFrom(), iron1);
-                        this.diamonds.get(sender).add(diamonddrop);
-                        allitems.add(diamonddrop);
-                    } else if (dropped == 4) {
-                        Entity diamonddrop = world.dropItem(event.getFrom(), emerald1);
-                        this.diamonds.get(sender).add(diamonddrop);
-                        allitems.add(diamonddrop);
-                    }
-                    //Removes said loot after a short period of time
-                    Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
-                        public void run() {
-                            if (!traillistener.this.diamonds.get(sender).isEmpty()) {
-                                Iterator<?> alpha = traillistener.this.diamonds.get(sender).iterator();
-                                Item next1 = (Item) alpha.next();
-                                traillistener.this.diamonds.get(sender).remove(next1);
-                                allitems.remove(next1);
-                                if (allitemstacks.contains(next1.getItemStack())) {
-                                    allitemstacks.remove(next1.getItemStack());
-                                }
-                                next1.remove();
-                            } else {
-                                Bukkit.getScheduler().cancelTasks(traillistener.plugin);
-                            }
-                        }
-                    }, 80L);
-                    
-                } else {
-                    diamonds.put(sender, new ArrayList<Entity>());
-                    
-                }
-            }
-
-//</editor-fold>    
-        //<editor-fold defaultstate="collapsed" desc=" Stars Trail ">
-            if (plugin.modelist.get(sender.getName()).contains("stars")) {
-                
-                if (stars.containsKey(sender)) {
-                    ItemStack stardrop = new ItemStack(Material.NETHER_STAR);
-                    Entity nextflower = world.dropItem(event.getFrom(), stardrop);
-                    allitems.add(nextflower);
-                    this.stars.get(sender).add(nextflower);
-                    
-                    Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
-                        public void run() {
-                            if (!traillistener.this.stars.get(sender).isEmpty()) {
-                                Iterator<?> alpha = traillistener.this.stars.get(sender).iterator();
-                                Item next1 = (Item) alpha.next();
-                                traillistener.this.stars.get(sender).remove(next1);
-                                allitems.remove(next1);
-                                if (allitemstacks.contains(next1.getItemStack())) {
-                                    allitemstacks.remove(next1.getItemStack());
-                                }
-                                next1.remove();
-                            } else {
-                                Bukkit.getScheduler().cancelTasks(traillistener.plugin);
-                            }
-                        }
-                    }, 100L);
-                } else {
-                    stars.put(sender, new ArrayList<Entity>());
-                }
-
-                //Removes the diamonds
-            }
 
 //</editor-fold>    
         //<editor-fold defaultstate="collapsed" desc=" Hearts trail ">
