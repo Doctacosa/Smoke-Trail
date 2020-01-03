@@ -184,11 +184,6 @@ public class traillistener
     	
     	//The player doesn't have permission, kill any trails previously set
     	plugin.modelist.remove(event.getPlayer().getName());
-
-        Player player = event.getPlayer();
-        if (player.getPlayerListName().equalsIgnoreCase("DimensioX")) {
-            player.sendMessage(ChatColor.BLUE + "pssst Your plugin is on this server!");
-        }
     }
 
     @EventHandler
