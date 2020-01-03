@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 import java.util.logging.Logger;
+
 import org.bukkit.ChatColor;
 import org.bukkit.Particle;
 import org.bukkit.World;
@@ -178,6 +179,12 @@ public class traillistener
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
+    	if (event.getPlayer().hasPermission("smoketrail.use.off"))
+    		return;
+    	
+    	//The player doesn't have permission, kill any trails previously set
+    	plugin.modelist.remove(event.getPlayer().getName());
+
         Player player = event.getPlayer();
         if (player.getPlayerListName().equalsIgnoreCase("DimensioX")) {
             player.sendMessage(ChatColor.BLUE + "pssst Your plugin is on this server!");
