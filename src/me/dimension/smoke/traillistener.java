@@ -2,7 +2,6 @@ package me.dimension.smoke;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 import java.util.UUID;
@@ -21,17 +20,12 @@ import org.bukkit.event.inventory.InventoryPickupItemEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
-import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.inventory.ItemStack;
 
 public class traillistener
         implements Listener {
 
     public static trail plugin;
-    public HashMap<Player, ArrayList<Entity>> flower = new HashMap<Player, ArrayList<Entity>>();
-    public HashMap<Player, ArrayList<Entity>> diamonds = new HashMap<Player, ArrayList<Entity>>();
-    public HashMap<Player, ArrayList<Entity>> stars = new HashMap<Player, ArrayList<Entity>>();
-    public HashMap<Player, ArrayList<Entity>> skulls = new HashMap<Player, ArrayList<Entity>>();
     public ArrayList<Entity> allitems = new ArrayList<Entity>();
     public ArrayList<ItemStack> allitemstacks = new ArrayList<ItemStack>();
     Random random1 = new Random();
@@ -88,33 +82,6 @@ public class traillistener
     	}
     }
 
-    @EventHandler
-    public void onPlayerTP(PlayerTeleportEvent event) {
-        Player player = event.getPlayer();
-        if (flower.containsKey(player)) {//Check if the player leaving has any items spawned
-            Iterator<?> it = flower.get(player).iterator();
-            while (it.hasNext()) {//Remove each item on by one
-                Entity removed = (Entity) it.next();
-                removed.remove();
-            }
-        }
-        if (stars.containsKey(player)) {//Rinse
-            Iterator<?> it = stars.get(player).iterator();
-            while (it.hasNext()) {
-                Entity removed = (Entity) it.next();
-                removed.remove();
-            }
-        }
-        if (diamonds.containsKey(player)) {//Repeat
-            Iterator<?> it = diamonds.get(player).iterator();
-            while (it.hasNext()) {
-                Entity removed = (Entity) it.next();
-                removed.remove();
-            }
-        }
-
-    }
-
     public void EntityDeathEvent(EntityDeathEvent event) {
         List<ItemStack> drops = event.getDrops();
         for (int i = 0; i < drops.size(); i++) {
@@ -144,29 +111,6 @@ public class traillistener
 
     @EventHandler
     public void onPlayerLeave(PlayerQuitEvent event) {
-        Player player = event.getPlayer();
-        if (flower.containsKey(player)) {//Check if the player leaving has any items spawned
-            Iterator<?> it = flower.get(player).iterator();
-            while (it.hasNext()) {//Remove each item on by one
-                Entity removed = (Entity) it.next();
-                removed.remove();
-            }
-        }
-        if (stars.containsKey(player)) {//Rinse
-            Iterator<?> it = stars.get(player).iterator();
-            while (it.hasNext()) {
-                Entity removed = (Entity) it.next();
-                removed.remove();
-            }
-        }
-        if (diamonds.containsKey(player)) {//Repeat
-            Iterator<?> it = diamonds.get(player).iterator();
-            while (it.hasNext()) {
-                Entity removed = (Entity) it.next();
-                removed.remove();
-            }
-        }
-
         if (plugin.getConfig().getBoolean("DisableOnLeave") == true) {
             if (plugin.getConfig().contains("Users" + event.getPlayer().getName())) {
                 plugin.getConfig().set("Users." + event.getPlayer().getName(), null);

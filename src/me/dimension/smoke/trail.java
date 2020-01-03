@@ -6,7 +6,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map.Entry;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -80,16 +79,6 @@ public class trail extends JavaPlugin {
     public void onDisable() {
         removeallItems(pl.allitems);
         trail.log.log(Level.INFO, "{0}is now disabled", this.lol);
-        for (Entry<String, ArrayList<String>> pointstostore : modelist.entrySet()) {
-            String skulls = null;
-            for (int i = 0; i < pointstostore.getValue().size(); i++) {
-
-                skulls += pointstostore.getValue().get(i);
-                skulls += ",";
-
-                this.getConfig().set("Users." + pointstostore.getKey(), skulls);
-            }
-        }
     }
 
     //Make commands work
@@ -248,38 +237,6 @@ public class trail extends JavaPlugin {
         }
 
     }
-    //Remove every item spawned by the player associated
-
-    public void removeplayerItems(HashMap<Player, ArrayList<Entity>> ent, HashMap<Player, ArrayList<Entity>> ent1, HashMap<Player, ArrayList<Entity>> ent2, HashMap<Player, ArrayList<Entity>> ent3, Player player) {
-        if (ent.containsKey(player)) {
-            Iterator<Entity> i = ent.get(player).iterator();
-            while (i.hasNext()) {
-                Entity next = i.next();
-                next.remove();
-            }
-        }
-        if (ent1.containsKey(player)) {
-            Iterator<Entity> i = ent1.get(player).iterator();
-            while (i.hasNext()) {
-                Entity next = i.next();
-                next.remove();
-            }
-        }
-        if (ent2.containsKey(player)) {
-            Iterator<Entity> i = ent2.get(player).iterator();
-            while (i.hasNext()) {
-                Entity next = i.next();
-                next.remove();
-            }
-        }
-        if (ent3.containsKey(player)) {
-            Iterator<Entity> i = ent3.get(player).iterator();
-            while (i.hasNext()) {
-                Entity next = i.next();
-                next.remove();
-            }
-        }
-    }
 
     //Reset all trails used by the player
     public void switchTrails(String player, String newtrail) {
@@ -288,7 +245,6 @@ public class trail extends JavaPlugin {
                 this.modelist.get(player).remove(newtrail);
                 this.reloadConfig();
                 Bukkit.getPlayer(player).sendMessage(trailutil.colorize(this.getConfig().getString("Messages." + newtrail + ".disabled")));
-                removeplayerItems(pl.diamonds, pl.flower, pl.stars, pl.skulls, Bukkit.getPlayer(player));
 
                 this.getConfig().set("Users." + player, null);
                 this.saveConfig();
@@ -299,7 +255,6 @@ public class trail extends JavaPlugin {
                 this.getConfig().set("Users." + player, null);
                 this.getConfig().set("Users." + player, newtrail);
                 Bukkit.getPlayer(player).sendMessage(trailutil.colorize(this.getConfig().getString("Messages." + newtrail + ".enabled")));
-                removeplayerItems(pl.diamonds, pl.flower, pl.stars, pl.skulls, Bukkit.getPlayer(player));
                 this.saveConfig();
             }
         } else {
@@ -308,7 +263,6 @@ public class trail extends JavaPlugin {
             Bukkit.getPlayer(player).sendMessage(trailutil.colorize(this.getConfig().getString("Messages." + newtrail + ".enabled")));
             this.reloadConfig();
             this.getConfig().set("Users." + player, newtrail);
-            removeplayerItems(pl.diamonds, pl.flower, pl.stars, pl.skulls, Bukkit.getPlayer(player));
             this.saveConfig();
         }
     }
