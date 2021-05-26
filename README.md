@@ -1,6 +1,8 @@
 # SmokeTrail
 
-**NOTE: Now retired and replaced by [IOTrails](https://github.com/Doctacosa/IOTrails), with much of the same functionality and more.**
+This fork is no longer active as it was replaced by [IOTrails](https://github.com/Doctacosa/IOTrails). This plugin was last confirmed as working with Minecraft 1.15.
+
+---
 
 This Minecraft plugin allows users with the correct permission to leave a trail of particle behind them as they walk, dazzling others in style! A common use for it is to reward contributors to a Minecraft server or community.
 
